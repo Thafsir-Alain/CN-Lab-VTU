@@ -1,4 +1,4 @@
-# CN-Lab-VTU - 18scheme
+# CN-Lab-VTU - 5th sem 18scheme CS
 Finding the simplest way to solve each programs.......
 
 Wanted to Learn stuffs on github! So sharing few knowledge on my current Academic Laboratory programs........ Hope it is informative!
