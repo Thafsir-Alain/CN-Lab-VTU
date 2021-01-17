@@ -1,68 +1,70 @@
 import java.util.Scanner;
-class CRC
-{
-public static void main(String args[])
-{
-Scanner sc=new Scanner(System.in);
-int m,g[],n,d[],z[],r[],msb,i,j,k;
+import java.io.*;
+public class CRC {
 
-System.out.print("Enter no. of data bits : ");
-n=sc.nextInt();
-System.out.print("Enter no. of generator bits : ");
-m=sc.nextInt();
+public static void main(String args[]) {
 
-d=new int[n+m];
-g=new int[m];
-System.out.print("Enter data bits : ");
-for(i=0;i<n;i++)
-    d[i]=sc.nextInt();
-System.out.print("Enter generator bits : ");
-for(j=0;j<m;j++)
-    g[j]=sc.nextInt();
-for(i=0;i<m-1;i++)
-    d[n+i]=0;
+    Scanner sc = new Scanner(System.in);
 
-r=new int[m+n];
-for(i=0;i<m;i++)
-    r[i]=d[i];
+    //Input Data Stream
+    System.out.print("Enter message bits: ");
+    String message = sc.nextLine();
+    System.out.print("Enter generator: ");
+    String generator = sc.nextLine();
+int data[] = new int[message.length() + generator.length() - 1];
+int divisor[] = new int[generator.length()];
+for(int i=0;i<message.length();i++)
+	data[i] = Integer.parseInt(message.charAt(i)+"");
+for(int i=0;i<generator.length();i++)
+	divisor[i] = Integer.parseInt(generator.charAt(i)+"");
 
-z=new int[m];
-for(i=0;i<m;i++)
-    z[i]=0;
-  
-for(i=0;i<n;i++)
+//Calculation of CRC
+for(int i=0;i<message.length();i++)
 {
-k=0;
-msb=r[i];
-for(j=i;j<m+i;j++)
-{
-    if(msb==0)
-        r[j]=xor(r[j],z[k]);
-    else
-        r[j]=xor(r[j],g[k]);
-    k++;
-}
-r[m+i]=d[m+i];
+	if(data[i]==1)
+		for(int j=0;j<divisor.length;j++)
+			data[i+j] ^= divisor[j];
 }
 
-System.out.print("\nThe code bits added are : ");
-for(i=n;i<n+m-1;i++)
-{
-  d[i]=r[i];
-  System.out.print(d[i]);
-}
-System.out.print("\nThe code data is : ");
-for(i=0;i<n+m-1;i++)
-{
-  System.out.print(d[i]);
-}
+//Display CRC
+System.out.print("The checksum code is: ");
+for(int i=0;i<message.length();i++)
+	data[i] = Integer.parseInt(message.charAt(i)+"");
+for(int i=0;i<data.length;i++) 
+    System.out.print(data[i]);
+System.out.print("\n");
+
+//Check for input CRC code
+System.out.print("Enter checksum code: ");
+	message = sc.nextLine();
+System.out.print("Enter generator: ");
+	generator = sc.nextLine();
+data = new int[message.length() + generator.length() - 1];
+divisor = new int[generator.length()];
+for(int i=0;i<message.length();i++)
+	data[i] = Integer.parseInt(message.charAt(i)+"");
+for(int i=0;i<generator.length();i++)
+	divisor[i] = Integer.parseInt(generator.charAt(i)+"");
+
+//Calculation of remainder
+for(int i=0;i<message.length();i++) {
+	if(data[i]==1)
+		for(int j=0;j<divisor.length;j++)
+			data[i+j] ^= divisor[j];
 }
 
-public static int xor(int x,int y)
-{
-  if(x==y)
-    return(0);
-  else
-    return(1);
+//Display validity of data
+boolean valid = true;
+for(int i=0;i<data.length;i++)
+	if(data[i]==1){
+		valid = false;
+		break;
+    }
+
+if(valid==true) 
+	System.out.println("Data stream is valid");
+else 
+	System.out.println("Data stream is invalid. CRC error occurred.");
 }
+
 }
