@@ -17,7 +17,7 @@ set tracefile [open 1.tr w]
 $ns trace-all $tracefile
 
 #Open the NAM trace file
-set namfile [open 2.nam w]
+set namfile [open 1.nam w]
 $ns namtrace-all $namfile
 
 #===================================
@@ -72,7 +72,7 @@ proc finish {} {
     $ns flush-trace
     close $tracefile
     close $namfile
-    exec nam 2.nam &
+    exec nam 1.nam &
     exit 0
 }
 $ns at $val(stop) "$ns nam-end-wireless $val(stop)"
