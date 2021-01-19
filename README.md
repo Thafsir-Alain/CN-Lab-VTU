@@ -14,11 +14,12 @@ Wanted to Learn stuffs on github! So sharing few knowledge on my current Academi
 ### 3. Implement an Ethernet LAN using n nodes and set multiple traffic nodes and plot congestion window for different source / destination.
   #### *TCL script(3.tcl), Namfile(3.nam), Tracefile(3.tr), Awkfile(3.awk)*
 ### 4. Implement simple ESS and with transmitting nodes in wire-less LAN by simulation and determine the performance with respect to transmission of packets.
-  #### *TCL script(4.tcl), Namfile(4.nam), Tracefile(4.tr)*
+  #### *TCL script(4.tcl), Namfile(4.nam), Tracefile(4.tr)* 
 
 ## Part B
 ### 1. CRC 
 ### 2. Bellmanford
-### 3. RSA
-### 4. Leakybucket
-  
+### 3. TCP Client/Server (ContentClient, Server)
+### 4. UDP Client/Server (ClientSide, ServerSide)
+### 5. RSA
+### 6. Leakybucket
