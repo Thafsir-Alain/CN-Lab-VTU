@@ -20,6 +20,6 @@ Wanted to Learn stuffs on github! So sharing few knowledge on my current Academi
 ### 1. CRC 
 ### 2. Bellmanford
 ### 3. TCP Client/Server (ContentClient, Server)
-### 4. UDP Client/Server (ClientSide, ServerSide)
+### 4. UDP Client/Server (MyClient, MyServerSide)
 ### 5. RSA
 ### 6. Leakybucket
